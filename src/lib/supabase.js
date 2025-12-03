@@ -2,14 +2,16 @@ import { createClient } from '@supabase/supabase-js'
 import { mockAuth } from './mockAuth'
 import { securityUtils, SecurityLogger } from './security'
 
-const supabaseUrl = import.meta.env.VITE_SUPABASE_URL || 'https://demo-project.supabase.co'
-const supabaseAnonKey = import.meta.env.VITE_SUPABASE_ANON_KEY || 'demo-key'
+const supabaseUrl = import.meta.env.VITE_SUPABASE_URL
+const supabaseAnonKey = import.meta.env.VITE_SUPABASE_ANON_KEY
 
 // Verificar si estamos en modo demo
 const isDemoMode = supabaseUrl === 'https://your-project.supabase.co' || 
                    supabaseAnonKey === 'your-anon-key' ||
                    supabaseUrl === 'https://demo-project.supabase.co' || 
-                   supabaseAnonKey === 'demo-key'
+                   supabaseAnonKey === 'demo-key' ||
+                   !supabaseUrl ||
+                   !supabaseAnonKey
 
 console.log('Demo mode:', isDemoMode, 'URL:', supabaseUrl, 'Key:', supabaseAnonKey)
 
@@ -892,5 +894,6 @@ SecurityLogger.log('system_initialized', {
   timestamp: new Date().toISOString()
 }, null, 'info')
 
+export { supabase }
 export default supabase
 

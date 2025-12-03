@@ -1,0 +1,43 @@
+# Dependencias
+node_modules/
+.pnp
+.pnp.js
+
+# Variables de entorno - NUNCA subir a Git
+.env
+.env.local
+.env.*.local
+
+# Archivos de construcción
+dist/
+dist-ssr/
+*.local
+
+# Archivos del editor
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+
+# Logs
+logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# Archivos temporales
+tmp/
+temp/
+.cache/
+
+# Archivos de prueba
+coverage/
+.nyc_output/
+
+# Archivos del sistema
+Thumbs.db
+.DS_Store
