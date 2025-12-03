@@ -31,10 +31,13 @@ Sistema CRM completo desarrollado en React con integración de WhatsApp Business
 - Gestión de conversaciones con clientes y leads
 - Soporte para archivos adjuntos
 
-### 🔒 **Sistema de Seguridad**
+### 🔒 **Sistema de Seguridad Avanzado**
 - Autenticación por roles (Administrador, Gerente, Comercial)
-- Logs de seguridad y auditoría
+- Logs de seguridad y auditoría en tiempo real
 - Control de acceso granular
+- Encriptación end-to-end de datos sensibles
+- Detección de amenazas y actividad sospechosa
+- Sistema de alertas automáticas
 
 ### 🌐 **Gestión de Sitios Web**
 - Administración de múltiples sitios web
@@ -55,7 +58,116 @@ Sistema CRM completo desarrollado en React con integración de WhatsApp Business
 - Node.js 18+ 
 - npm o yarn
 - Cuenta de Supabase
-- WhatsApp Business API (opcional)
+- WhatsApp Business API (opcional)```
+
+## 🔒 Sistema de Logs de Seguridad
+
+El CRM incluye un sistema avanzado de logs de seguridad que monitorea y registra todas las actividades del sistema para detectar amenazas y garantizar la integridad de los datos.
+
+### 📊 **¿Qué Monitorizan los Logs?**
+
+#### **🚨 Amenazas de Seguridad**
+- **Intentos de intrusión:** Múltiples intentos de login fallidos
+- **Accesos anómalos:** Conexiones desde ubicaciones inusuales o fuera del horario laboral
+- **Actividad sospechosa:** Eliminaciones masivas, actividad excesiva (>100 acciones/hora)
+- **Manipulación de datos:** Cambios en campos críticos como IDs o fechas de creación
+
+#### **🛡️ Integridad de Datos**
+- **Verificación de integridad:** Detección de datos corruptos o inconsistentes
+- **Campos críticos:** Protección de campos como ID, created_at, user_id
+- **Operaciones masivas:** Monitoreo de operaciones bulk que podrían ser maliciosas
+
+#### **🔧 Fallos del Sistema**
+- **Errores técnicos:** Fallos de conexión a Supabase, problemas de WhatsApp
+- **Fallos de encriptación:** Problemas con la seguridad de datos sensibles
+- **Errores CRUD:** Problemas en operaciones de base de datos
+
+### 🎯 **Niveles de Alerta**
+
+| Nivel | Descripción | Ejemplos |
+|-------|-------------|----------|
+| 🔴 **CRÍTICO** | Amenazas graves que requieren acción inmediata | Violaciones de integridad, manipulación de datos críticos |
+| 🟠 **ERROR** | Fallos importantes del sistema | Errores de conectividad, fallos de verificación |
+| 🟡 **WARNING** | Actividad sospechosa que requiere atención | Actividad excesiva, accesos fuera de horario |
+| 🔵 **INFO** | Actividades normales del sistema | Logins exitosos, operaciones rutinarias |
+
+### 📱 **Cómo Acceder a los Logs**
+
+1. **Inicia sesión** en el CRM con permisos de administrador
+2. **Navega a la página de Seguridad** desde el menú principal
+3. **Selecciona la pestaña "Logs"** para ver el historial completo
+4. **Usa los filtros** para buscar eventos específicos por:
+   - Nivel de alerta (Crítico, Error, Warning, Info)
+   - Término de búsqueda (acción, usuario, detalles)
+   - Rango de fechas
+
+### 🔍 **Funcionalidades de los Logs**
+
+#### **Visualización**
+- **Lista cronológica** de todos los eventos (más recientes primero)
+- **Códigos de color** para identificar rápidamente el nivel de gravedad
+- **Detalles expandibles** con información completa del evento
+- **Información de contexto:** Usuario, IP, timestamp, detalles técnicos
+
+#### **Filtrado y Búsqueda**
+- **Búsqueda por texto:** Encuentra eventos específicos por acción o usuario
+- **Filtros por nivel:** Muestra solo alertas críticas, errores, etc.
+- **Exportación:** Descarga logs en formato JSON para análisis externo
+
+#### **Alertas en Tiempo Real**
+- **Notificaciones del navegador** para alertas críticas
+- **Alertas visuales** en la interfaz del CRM
+- **Registro automático** de todas las actividades del sistema
+
+### 🛠️ **Configuración de Seguridad**
+
+#### **Encriptación de Datos**
+Los siguientes campos se encriptan automáticamente:
+- Email, teléfono, direcciones
+- Notas y comentarios privados
+- Descripciones sensibles
+- Observaciones de clientes
+
+#### **Detección de Amenazas**
+El sistema detecta automáticamente:
+- **Múltiples intentos de login** (>5 fallos en 10 minutos)
+- **Actividad excesiva** (>100 acciones en 1 hora)
+- **Accesos fuera de horario** (antes 6am o después 10pm)
+- **Operaciones masivas** sospechosas
+
+### 📋 **Ejemplo de Alerta**
+
+```json
+{
+  "nivel": "CRÍTICO",
+  "mensaje": "Actividad sospechosa detectada",
+  "detalles": {
+    "usuario": "comercial@empresa.com",
+    "acción": "25 eliminaciones de clientes en 10 minutos",
+    "ip": "192.168.1.100",
+    "timestamp": "2025-12-03T10:30:00Z"
+  },
+  "recomendación": "Revisar actividad del usuario inmediatamente"
+}
+```
+
+### 🔐 **Mejores Prácticas de Seguridad**
+
+1. **Revisa los logs regularmente** para detectar patrones anómalos
+2. **Configura notificaciones** para alertas críticas
+3. **Exporta logs periódicamente** para análisis de seguridad
+4. **Investiga inmediatamente** cualquier alerta crítica
+5. **Mantén actualizadas** las credenciales de acceso
+6. **Usa roles apropiados** para cada usuario del sistema
+
+### ⚠️ **Limitaciones Importantes**
+
+- **Almacenamiento local:** Los logs se guardan en el navegador (localStorage)
+- **No detecta virus:** El sistema no incluye antivirus, solo monitorea actividad del CRM
+- **Límite de logs:** Se mantienen los últimos 1000 logs por rendimiento
+- **Dependiente del navegador:** Los logs son específicos de cada navegador/dispositivo
+
+---
 
 ## 🚀 Instalación y Configuración
 
