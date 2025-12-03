@@ -349,13 +349,29 @@ npm run build
    /*    /index.html   200
    ```
 
-## 👥 Usuarios de Demostración
+## 👥 Gestión de Usuarios
 
-El sistema incluye usuarios de prueba:
+El sistema incluye un robusto sistema de autenticación con diferentes roles:
 
-- **Administrador:** admin@crm.com / admin123
-- **Gerente:** gerente@crm.com / gerente123  
-- **Comercial:** comercial@crm.com / comercial123
+- **Administrador:** Acceso completo a todas las funcionalidades del sistema
+- **Gerente:** Gestión de equipos y supervisión de actividades
+- **Comercial:** Enfoque en ventas y gestión de clientes
+
+### 🔐 **Configuración Inicial de Seguridad**
+
+**IMPORTANTE:** Por seguridad, el sistema no incluye usuarios predeterminados. Debes:
+
+1. **Crear tu usuario administrador** durante la primera configuración
+2. **Configurar contraseñas seguras** para todos los usuarios
+3. **Usar el panel de administración** para invitar nuevos usuarios
+4. **Cambiar las contraseñas regularmente** por seguridad
+
+### 🛡️ **Funcionalidades de Seguridad**
+
+- **Cambio de contraseña:** Los administradores pueden cambiar sus contraseñas
+- **Invitación de usuarios:** Sistema para invitar y crear nuevos usuarios
+- **Roles y permisos:** Control granular de acceso por rol
+- **Logs de seguridad:** Monitoreo completo de actividades del sistema
 
 ## 🔧 Configuración Adicional
 

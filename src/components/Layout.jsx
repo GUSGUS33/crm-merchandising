@@ -1,6 +1,8 @@
 import React, { useState } from 'react'
 import { Outlet, useLocation, useNavigate } from 'react-router-dom'
 import { useAuth } from '../contexts/AuthContext'
+import CambiarPasswordModal from './CambiarPasswordModal'
+import InvitarUsuarioModal from './InvitarUsuarioModal'
 import { 
   LayoutDashboard, 
   Users, 
@@ -15,7 +17,9 @@ import {
   Search,
   Globe,
   Shield,
-  MessageCircle
+  MessageCircle,
+  Key,
+  UserCheck
 } from 'lucide-react'
 import { Button } from './ui/button'
 import { Input } from './ui/input'
@@ -34,6 +38,8 @@ const Layout = () => {
   const location = useLocation()
   const navigate = useNavigate()
   const [sidebarOpen, setSidebarOpen] = useState(false)
+  const [cambiarPasswordOpen, setCambiarPasswordOpen] = useState(false)
+  const [invitarUsuarioOpen, setInvitarUsuarioOpen] = useState(false)
 
   // Funciones de uso diario
   const dailyMenuItems = [
@@ -297,6 +303,22 @@ const Layout = () => {
                     </div>
                   </DropdownMenuLabel>
                   <DropdownMenuSeparator />
+                  
+                  {/* Opciones de gestión de usuarios para admin */}
+                  {getUserRole() === 'admin' && (
+                    <>
+                      <DropdownMenuItem onClick={() => setCambiarPasswordOpen(true)}>
+                        <Key className="mr-2 h-4 w-4" />
+                        <span>Cambiar Contraseña</span>
+                      </DropdownMenuItem>
+                      <DropdownMenuItem onClick={() => setInvitarUsuarioOpen(true)}>
+                        <UserCheck className="mr-2 h-4 w-4" />
+                        <span>Invitar Usuario</span>
+                      </DropdownMenuItem>
+                      <DropdownMenuSeparator />
+                    </>
+                  )}
+                  
                   <DropdownMenuItem onClick={handleSignOut}>
                     <LogOut className="mr-2 h-4 w-4" />
                     <span>Cerrar Sesión</span>
@@ -320,6 +342,23 @@ const Layout = () => {
           onClick={() => setSidebarOpen(false)}
         />
       )}
+
+      {/* Modales de gestión de usuarios */}
+      <CambiarPasswordModal
+        isOpen={cambiarPasswordOpen}
+        onClose={() => setCambiarPasswordOpen(false)}
+        currentUser={user}
+      />
+
+      <InvitarUsuarioModal
+        isOpen={invitarUsuarioOpen}
+        onClose={() => setInvitarUsuarioOpen(false)}
+        currentUser={user}
+        onUserCreated={(newUser) => {
+          console.log('Usuario creado:', newUser)
+          // Aquí podrías actualizar una lista de usuarios si la tienes
+        }}
+      />
     </div>
   )
 }
